@@ -23,7 +23,6 @@ OneWire ourWire(7); //Se establece el pin 7 como bus OneWire
 DallasTemperature sensors(&ourWire); //Se declara una variable u objeto para el sensor
 
 //Termistor
-int i = 0; //Iteraciones
 unsigned long TiempoMedido = 0; //Tiempo medido
 unsigned long PeriodoM = 30000; //Periodo de medición
 int SalidaTermistor = A0; //Entrada analógica
@@ -50,7 +49,6 @@ void loop()
     temp = (temp-DExperimental1)*(DRangoEstimado/DRangoExperimental) + DEstimado1; //Valor corregido
     
     //Termistor
-    i++;
     AR = analogRead(SalidaTermistor);
     RT = R1 * (double)AR/(double)(1023-AR); //Resistencia del termistor a partir de la resistencia conocida y la salida analógica.
     T = 1.0 / (a + b*log(RT) + c*pow(log(RT), 3)); //Ecuación de Steinhart-Hart
